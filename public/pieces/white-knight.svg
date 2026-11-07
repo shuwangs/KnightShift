@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128" role="img" aria-labelledby="title">
+  <title id="title">White knight</title>
+  <g stroke="#665343" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M39 96C40 82 47 73 59 64L45 67Q39 68 35 63L29 54Q27 50 31 46L47 31L50 16L63 25C82 24 96 39 96 59C96 73 86 82 89 96Z" fill="#FFF4DE"/>
+    <path d="M71 30C86 41 87 57 79 69L71 80" fill="none" stroke="#E4C69F" stroke-width="7"/>
+    <path d="M50 16L52 30L61 26" fill="#E4C69F"/>
+    <path d="M31 54L39 56" fill="none"/>
+    <path d="M42 93H86C92 93 96 98 96 104V108H32V104C32 98 36 93 42 93Z" fill="#FFF4DE"/>
+    <rect x="27" y="106" width="74" height="12" rx="6" fill="#E4C69F"/>
+  </g>
+  <circle cx="53" cy="45" r="3" fill="#665343"/><ellipse cx="55" cy="54" rx="5" ry="3" fill="#ECA6A0" opacity="0.8"/>
+</svg>

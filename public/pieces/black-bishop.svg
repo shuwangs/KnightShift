@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128" role="img" aria-labelledby="title">
+  <title id="title">Black bishop</title>
+  <g stroke="#242739" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M53 60H75C73 75 78 86 88 96H40C50 86 55 75 53 60Z" fill="#50546F"/>
+    <path d="M64 13C59 22 39 33 39 46C39 59 50 66 64 66S89 59 89 46C89 33 69 22 64 13Z" fill="#50546F"/>
+    <path d="M72 25L61 39" fill="none"/>
+    <rect x="45" y="65" width="38" height="9" rx="4.5" fill="#777C9D"/>
+    <path d="M42 93H86C92 93 96 98 96 104V108H32V104C32 98 36 93 42 93Z" fill="#50546F"/>
+    <rect x="27" y="106" width="74" height="12" rx="6" fill="#777C9D"/>
+  </g>
+  <g fill="#FFF4DE"><circle cx="56" cy="49" r="2.5"/><circle cx="72" cy="49" r="2.5"/></g>
+    <path d="M60 56Q64 60 68 56" fill="none" stroke="#FFF4DE" stroke-width="2.5" stroke-linecap="round"/>
+    <g fill="#E8A2B3" opacity="0.75"><ellipse cx="49" cy="55" rx="4" ry="2.5"/><ellipse cx="79" cy="55" rx="4" ry="2.5"/></g>
+</svg>

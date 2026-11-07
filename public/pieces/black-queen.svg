@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128" role="img" aria-labelledby="title">
+  <title id="title">Black queen</title>
+  <g stroke="#242739" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M48 52H80L77 74L89 96H39L51 74Z" fill="#50546F"/>
+    <path d="M43 54L32 25L51 37L64 17L77 37L96 25L85 54Z" fill="#50546F"/>
+    <circle cx="32" cy="23" r="5" fill="#777C9D"/>
+    <circle cx="64" cy="15" r="5" fill="#777C9D"/>
+    <circle cx="96" cy="23" r="5" fill="#777C9D"/>
+    <rect x="41" y="51" width="46" height="10" rx="5" fill="#777C9D"/>
+    <path d="M42 93H86C92 93 96 98 96 104V108H32V104C32 98 36 93 42 93Z" fill="#50546F"/>
+    <rect x="27" y="106" width="74" height="12" rx="6" fill="#777C9D"/>
+  </g>
+  <g fill="#FFF4DE"><circle cx="56" cy="73" r="2.5"/><circle cx="72" cy="73" r="2.5"/></g>
+    <path d="M60 80Q64 84 68 80" fill="none" stroke="#FFF4DE" stroke-width="2.5" stroke-linecap="round"/>
+    <g fill="#E8A2B3" opacity="0.75"><ellipse cx="49" cy="79" rx="4" ry="2.5"/><ellipse cx="79" cy="79" rx="4" ry="2.5"/></g>
+</svg>

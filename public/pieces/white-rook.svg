@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128" role="img" aria-labelledby="title">
+  <title id="title">White rook</title>
+  <g stroke="#665343" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M43 45H85L82 68L88 96H40L46 68Z" fill="#FFF4DE"/>
+    <path d="M34 20Q34 17 38 17H48V30H57V17H71V30H80V17H90Q94 17 94 21V47Q94 52 89 52H39Q34 52 34 47Z" fill="#FFF4DE"/>
+    <rect x="40" y="51" width="48" height="9" rx="4.5" fill="#E4C69F"/>
+    <path d="M42 93H86C92 93 96 98 96 104V108H32V104C32 98 36 93 42 93Z" fill="#FFF4DE"/>
+    <rect x="27" y="106" width="74" height="12" rx="6" fill="#E4C69F"/>
+  </g>
+  <g fill="#665343"><circle cx="56" cy="73" r="2.5"/><circle cx="72" cy="73" r="2.5"/></g>
+    <path d="M60 80Q64 84 68 80" fill="none" stroke="#665343" stroke-width="2.5" stroke-linecap="round"/>
+    <g fill="#ECA6A0" opacity="0.75"><ellipse cx="49" cy="79" rx="4" ry="2.5"/><ellipse cx="79" cy="79" rx="4" ry="2.5"/></g>
+</svg>

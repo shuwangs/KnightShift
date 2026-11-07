@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128" role="img" aria-labelledby="title">
+  <title id="title">White king</title>
+  <g stroke="#665343" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M47 48H81C89 48 91 56 87 64L78 79L89 96H39L50 79L41 64C37 56 39 48 47 48Z" fill="#FFF4DE"/>
+    <path d="M58 12H70V23H81V35H70V48H58V35H47V23H58Z" fill="#FFF4DE"/>
+    <rect x="43" y="47" width="42" height="10" rx="5" fill="#E4C69F"/>
+    <path d="M42 93H86C92 93 96 98 96 104V108H32V104C32 98 36 93 42 93Z" fill="#FFF4DE"/>
+    <rect x="27" y="106" width="74" height="12" rx="6" fill="#E4C69F"/>
+  </g>
+  <g fill="#665343"><circle cx="56" cy="68" r="2.5"/><circle cx="72" cy="68" r="2.5"/></g>
+    <path d="M60 75Q64 79 68 75" fill="none" stroke="#665343" stroke-width="2.5" stroke-linecap="round"/>
+    <g fill="#ECA6A0" opacity="0.75"><ellipse cx="49" cy="74" rx="4" ry="2.5"/><ellipse cx="79" cy="74" rx="4" ry="2.5"/></g>
+</svg>

@@ -1,0 +1,179 @@
+.app {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 28px;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 24px;
+  letter-spacing: -0.8px;
+}
+
+.header button {
+  min-height: 44px;
+  padding: 10px 18px;
+  border: 0;
+  border-radius: 8px;
+  background: #b4cc91;
+  color: #1d2818;
+  cursor: pointer;
+}
+
+.header button:hover {
+  background: #c4dba3;
+}
+
+.game-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 640px) minmax(240px, 1fr);
+  gap: 28px;
+  align-items: start;
+}
+
+.board-area,
+.sidebar {
+  min-width: 0;
+}
+
+.player {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 0;
+}
+
+.player span {
+  color: #a5ada7;
+  font-size: 14px;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(8, 1fr);
+  aspect-ratio: 1;
+  overflow: hidden;
+  border-radius: 4px;
+}
+
+.square {
+  position: relative;
+  min-width: 0;
+  min-height: 0;
+}
+
+.piece {
+  position: absolute;
+  inset: 8%;
+  width: 84%;
+  height: 84%;
+  object-fit: contain;
+  user-select: none;
+  pointer-events: none;
+}
+
+.light {
+  background: #e4e7d5;
+  color: #526b50;
+}
+
+.dark {
+  background: #78916d;
+  color: #eef1e3;
+}
+
+.rank,
+.file {
+  position: absolute;
+  z-index: 1;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.rank {
+  top: 4px;
+  left: 5px;
+}
+
+.file {
+  bottom: 3px;
+  right: 5px;
+}
+
+.sidebar {
+  display: grid;
+  gap: 16px;
+  padding-top: 48px;
+}
+
+.panel {
+  padding: 20px;
+  border: 1px solid #383e39;
+  border-radius: 12px;
+  background: #222724;
+}
+
+.panel h2 {
+  margin: 0 0 20px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.opponent-details {
+  display: grid;
+  gap: 14px;
+  margin: 0;
+}
+
+.opponent-details div {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.opponent-details dt,
+.empty-state {
+  color: #a5ada7;
+}
+
+.opponent-details dd {
+  margin: 0;
+}
+
+.move-panel {
+  min-height: 240px;
+}
+
+.empty-state {
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+@media (max-width: 760px) {
+  .app {
+    padding: 16px;
+  }
+
+  .game-layout {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .sidebar {
+    padding-top: 0;
+  }
+
+  .player span {
+    font-size: 12px;
+  }
+}
