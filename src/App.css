@@ -70,6 +70,65 @@
   position: relative;
   min-width: 0;
   min-height: 0;
+  border: 0;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.square.selected {
+  box-shadow: inset 0 0 0 4px #e9b949;
+}
+
+.square:focus-visible {
+  outline: 3px solid #263d78;
+  outline-offset: -3px;
+  z-index: 2;
+}
+
+.square:disabled {
+  cursor: default;
+}
+
+.square.legal-move::after {
+  content: "";
+  position: absolute;
+  inset: 36%;
+  border-radius: 50%;
+  background: rgb(25 45 25 / 35%);
+  pointer-events: none;
+}
+
+.square.legal-capture::after {
+  content: "";
+  position: absolute;
+  inset: 4%;
+  border: 4px solid rgb(115 42 35 / 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.game-status {
+  margin: 0;
+  padding: 14px 0;
+  min-height: 48px;
+}
+
+.move-list {
+  margin: 0;
+  padding-left: 28px;
+  font-variant-numeric: tabular-nums;
+}
+
+.move-list li {
+  padding: 8px 0;
+  border-bottom: 1px solid #383e39;
+}
+
+.move-list span {
+  display: inline-block;
+  width: 50%;
 }
 
 .piece {
