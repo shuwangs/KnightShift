@@ -1,6 +1,7 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Board from "./components/Board";
 import { useChessGame } from "./hooks/useChessGame";
+import type { Square } from "chess.js";
 import "./App.css";
 
 const AI_RESPONSE_DELAY_MS = 1500;
@@ -8,31 +9,104 @@ const AI_RESPONSE_DELAY_MS = 1500;
 function App() {
   // 棋盘、重新开始和记录共用同一份棋局。
   const game = useChessGame();
-  const { turn, isGameOver, getRandomMove, movePiece } = game;
-  const isThinking = turn === "b" && !isGameOver;
+  const { turn, isGameOver, uciHistory, movePiece } = game;
+  const [aiError, setAiError] = useState<string | null>(null);
+  const [retryCount, setRetryCount] = useState(0);
+
+  const isThinking =
+    turn === "b" && !isGameOver && aiError === null;
+
+
   useEffect(() => {
+    setAiError(null);
+
     if (turn !== "b" || isGameOver) return;
 
-    const timer = window.setTimeout(() => {
-      const move = getRandomMove();
+    const controller = new AbortController();
+    const startedAt = performance.now();
 
-      if (move) {
-        const promotion = move.promotion;
-        movePiece(
-          move.from,
-          move.to,
-          promotion === "r" || promotion === "b" || promotion === "n"
-            ? promotion
-            : "q",
+    let cancelled = false;
+    let moveTimer: number | undefined;
+
+    // 防止请求一直没有响应
+    const timeoutTimer = window.setTimeout(
+      () => controller.abort(),
+      120_000,
+    );
+
+
+
+
+    async function requestMove() {
+      try {
+        const response = await fetch("http://127.0.0.1:8000/move", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            moves: uciHistory,
+          }),
+          signal: controller.signal,
+        });
+
+        if (!response.ok) {
+          throw new Error(`AI request failed: ${response.status}`);
+        }
+
+        const move = await response.json();
+
+        // 检查接口返回的数据
+        if (
+          typeof move.from !== "string" ||
+          typeof move.to !== "string" ||
+          !/^[a-h][1-8]$/.test(move.from) ||
+          !/^[a-h][1-8]$/.test(move.to) ||
+          ![null, undefined, "q", "r", "b", "n"].includes(move.promotion)
+        ) {
+          throw new Error("AI returned an invalid response.");
+        }
+
+        if (cancelled) return;
+
+        // 请求本身若已花费超过 1.5 秒，就不用再等待
+        const remaining = Math.max(
+          0,
+          AI_RESPONSE_DELAY_MS - (performance.now() - startedAt),
         );
+
+        moveTimer = window.setTimeout(() => {
+          if (cancelled) return;
+
+          const success = movePiece(
+            move.from as Square,
+            move.to as Square,
+            move.promotion ?? "q",
+          );
+
+          if (!success) {
+            setAiError("AI returned an illegal move. Please retry.");
+          }
+        }, remaining);
+      } catch {
+        if (!cancelled) {
+          setAiError(
+            "Could not get an AI move. Check the Python server and retry.",
+          );
+        }
+      } finally {
+        window.clearTimeout(timeoutTimer);
       }
-    }, AI_RESPONSE_DELAY_MS);
+    }
 
-    // 重新开始、局面改变或组件卸载时，取消旧的待执行走法
-    return () => window.clearTimeout(timer);
-  }, [turn, isGameOver, getRandomMove, movePiece]);
-
-  return (
+    void requestMove();
+    return () => {
+      cancelled = true;
+      controller.abort();
+      window.clearTimeout(moveTimer);
+      window.clearTimeout(timeoutTimer);
+    };
+  }, [turn, isGameOver, uciHistory, movePiece, retryCount]); return (
 
     <div className="app">
       <header className="header">

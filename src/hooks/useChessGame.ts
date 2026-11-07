@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import { Chess } from "chess.js";
 import type { Square } from "chess.js";
 
@@ -13,6 +13,13 @@ export function useChessGame() {
     const board = game.board();
     const turn = game.turn(); // "w" 为白方，"b" 为黑方
     const isGameOver = game.isGameOver();
+
+    const uciHistory = useMemo(
+        () => game.history({ verbose: true }).map(
+            (move) => `${move.from}${move.to}${move.promotion ?? ""}`,
+        ),
+        [game],
+    );
 
     const legalMoves = selectedSquare && !isGameOver
         ? [...new Set(
@@ -94,6 +101,7 @@ export function useChessGame() {
         isCheckmate: game.isCheckmate(),
         isDraw: game.isDraw(),
         isGameOver,
+        uciHistory,
         handleSquareClick,
         getRandomMove,
         movePiece,
