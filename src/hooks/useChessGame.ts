@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { Chess } from "chess.js";
 import type { Square } from "chess.js";
 
@@ -22,7 +22,7 @@ export function useChessGame() {
         : [];
 
     // 返回 true 表示走棋成功，false 表示非法走法或对局已经结束。
-    const movePiece = (
+    const movePiece = useCallback((
         from: Square,
         to: Square,
         promotion: Promotion = "q",
@@ -43,7 +43,7 @@ export function useChessGame() {
         setGame(nextGame);
         setSelectedSquare(null);
         return true;
-    };
+    }, [game]);
 
     const handleSquareClick = (square: Square) => {
         if (isGameOver) return;
@@ -68,6 +68,15 @@ export function useChessGame() {
         }
     };
 
+    const getRandomMove = useCallback(() => {
+        const moves = game.moves({ verbose: true });
+
+        if (moves.length === 0) return null;
+
+        const index = Math.floor(Math.random() * moves.length);
+        return moves[index];
+    }, [game]);
+
     const resetGame = () => {
         setGame(new Chess());
         setSelectedSquare(null);
@@ -86,6 +95,7 @@ export function useChessGame() {
         isDraw: game.isDraw(),
         isGameOver,
         handleSquareClick,
+        getRandomMove,
         movePiece,
         resetGame,
     };

@@ -12,9 +12,10 @@ const pieceNames: Record<PieceSymbol, string> = {
 
 type BoardProps = {
     game: ReturnType<typeof useChessGame>;
+    isThinking: boolean;
 };
 
-const Board = ({ game }: BoardProps) => {
+const Board = ({ game, isThinking }: BoardProps) => {
     const {
         board, turn, selectedSquare, legalMoves, handleSquareClick,
         isCheck, isCheckmate, isDraw, isGameOver,
@@ -24,7 +25,9 @@ const Board = ({ game }: BoardProps) => {
         ? `Checkmate — ${turn === "w" ? "Black" : "White"} wins`
         : isDraw
             ? "Game over — draw"
-            : `${side} to move${isCheck ? " — check!" : ""}`;
+            : isThinking
+                ? `AI is thinking…${isCheck ? " — Black is in check" : ""}`
+                : `${side} to move${isCheck ? " — check!" : ""}`;
 
     return (
         <section className="board-area" aria-label="Game area">
@@ -50,7 +53,7 @@ const Board = ({ game }: BoardProps) => {
                             ].filter(Boolean).join(" ")}
                             aria-label={`${coordinate}, ${name}${isLegal ? ", legal destination" : ""}`}
                             aria-pressed={isSelected}
-                            disabled={isGameOver}
+                            disabled={isGameOver || turn === "b"}
                             onClick={() => handleSquareClick(coordinate)}
                         >
                             {piece && (
